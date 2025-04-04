@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "assembleRelease": "echo \"This is a placeholder for the release build script\""
+    "assembleRelease": "cd android && ./gradlew assembleRelease" // Lệnh này build APK
   },
   "dependencies": {
     "react": "^17.0.2",
