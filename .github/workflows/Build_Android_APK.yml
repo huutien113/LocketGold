@@ -19,7 +19,7 @@ jobs:
         node-version: '16'
 
     - name: Unzip files
-      run: unzip locket_upload_react_native.zip -d .
+      run: unzip -o locket_upload_react_native.zip -d .
 
     - name: Install dependencies
       run: yarn install
