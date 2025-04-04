@@ -24,6 +24,9 @@ jobs:
     - name: Install dependencies
       run: yarn install
 
+    - name: Grant execute permission for gradlew
+      run: chmod +x android/gradlew
+
     - name: Build APK
       run: cd android && ./gradlew assembleRelease
 
