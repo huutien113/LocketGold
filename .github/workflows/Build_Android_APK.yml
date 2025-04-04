@@ -18,11 +18,14 @@ jobs:
       with:
         node-version: '16'
 
+    - name: Unzip files
+      run: unzip locket_upload_react_native.zip -d .
+
     - name: Install dependencies
       run: yarn install
 
     - name: Build APK
-      run: yarn run assembleRelease
+      run: cd android && ./gradlew assembleRelease
 
     - name: Upload APK
       uses: actions/upload-artifact@v4
