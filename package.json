@@ -1,0 +1,13 @@
+{
+  "name": "LocketGold",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "assembleRelease": "echo \"This is a placeholder for the release build script\""
+  },
+  "dependencies": {
+    "react": "^17.0.2",
+    "react-native": "^0.64.2"
+  }
+}
