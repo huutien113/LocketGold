@@ -1,0 +1,29 @@
+name: Extract and Analyze File
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  analyze:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4
+
+    - name: Set up Node.js
+      uses: actions/setup-node@v4
+      with:
+        node-version: '18'
+
+    - name: Unzip files
+      run: unzip -o locket_upload_react_native.zip -d .
+
+    - name: Analyze files
+      run: |
+        for file in $(find . -type f); do
+          echo "Analyzing $file"
+          cat $file
+        done
