@@ -43,6 +43,9 @@ jobs:
       - name: Build APK
         run: cd source/android && ./gradlew assembleRelease --warning-mode all --stacktrace
 
+      - name: List APK outputs
+        run: find source/android/app/build/outputs/apk -type f
+
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
