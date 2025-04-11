@@ -41,7 +41,7 @@ jobs:
         run: chmod +x source/android/gradlew
 
       - name: Build APK
-        run: cd source/android && ./gradlew assembleRelease
+        run: cd source/android && ./gradlew assembleRelease --warning-mode all --stacktrace
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
