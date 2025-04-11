@@ -1,13 +1,11 @@
 {
-  "name": "LocketGold",
+  "name": "locket_upload",
   "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "private": true,
   "scripts": {
-    "assembleRelease": "cd android && ./gradlew assembleRelease"
+    "android": "react-native run-android",
+    "build": "cd android && ./gradlew assembleRelease"
   },
-  "dependencies": {
-    "react": "^17.0.2",
-    "react-native": "^0.64.2"
-  }
+  "dependencies": {},
+  "devDependencies": {}
 }
