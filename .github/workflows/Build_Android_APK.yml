@@ -4,34 +4,47 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
     steps:
-    - name: Checkout repository
-      uses: actions/checkout@v4
+      - name: Checkout code
+        uses: actions/checkout@v3
 
-    - name: Set up Node.js
-      uses: actions/setup-node@v4
-      with:
-        node-version: '18'
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18
 
-    - name: Unzip files
-      run: unzip -o locket_upload_react_native.zip -d .
+      - name: Install unzip tool
+        run: sudo apt-get install unzip
 
-    - name: Install dependencies
-      run: yarn install
+      - name: Unzip source code
+        run: unzip locket_upload_react_native.zip -d source
 
-    - name: Grant execute permission for gradlew
-      run: chmod +x android/gradlew
+      - name: Set up Java
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'zulu'
+          java-version: '17'
 
-    - name: Build APK
-      run: cd android && ./gradlew assembleRelease
+      - name: Install Yarn
+        run: npm install -g yarn
 
-    - name: Upload APK
-      uses: actions/upload-artifact@v4
-      with:
-        name: app-release.apk
-        path: android/app/build/outputs/apk/release/app-release.apk
+      - name: Install dependencies
+        run: cd source && yarn install
+
+      - name: Grant permission to gradlew
+        run: chmod +x source/android/gradlew
+
+      - name: Build APK
+        run: cd source/android && ./gradlew assembleRelease
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: release-apk
+          path: source/android/app/build/outputs/apk/release/app-release.apk
