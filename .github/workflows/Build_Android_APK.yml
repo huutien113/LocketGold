@@ -46,8 +46,8 @@ jobs:
       - name: List APK outputs
         run: find source/android/app/build/outputs/apk -type f
 
-      - name: Upload APK
+      - name: Upload All APKs
         uses: actions/upload-artifact@v4
         with:
-          name: release-apk
-          path: source/android/app/build/outputs/apk/release/app-release.apk
+          name: all-apks
+          path: source/android/app/build/outputs/apk/release/*.apk
